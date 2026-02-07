@@ -1,0 +1,9 @@
+{
+  "name": "Copy of DentalIntel DFW",
+  "description": "A Data-Hardened competitive intelligence dashboard for the DFW Dental Market, featuring Gemini-powered analysis, image tools, and geographic verification.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
