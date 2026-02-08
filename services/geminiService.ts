@@ -2,7 +2,13 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { SYSTEM_INSTRUCTION, MODEL_THINKING, MODEL_FLASH, MODEL_IMAGE_EDIT, MODEL_IMAGE_GEN, MODEL_VIDEO, MODEL_FLASH_LITE } from "../constants";
 import { AspectRatio, MarketData } from "../types";
 
-const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getApiKey = (): string => {
+  const apiKey = import.meta.env.VITE_API_KEY;
+  if (!apiKey) throw new Error("Missing VITE_API_KEY (Vite env var).");
+  return apiKey;
+};
+
+const getAI = () => new GoogleGenAI({ apiKey: getApiKey() });
 
 export const refreshMarketData = async (currentData: MarketData): Promise<{ data: MarketData, groundingChunks?: any[] }> => {
   const ai = getAI();
